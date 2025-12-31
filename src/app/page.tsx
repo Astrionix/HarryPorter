@@ -11,7 +11,7 @@ import Achievements from "@/components/Achievements";
 import Certifications from "@/components/Certifications";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
-import MagicCursor from "@/components/MagicCursor";
+
 import ScrollSpell from "@/components/ScrollSpell";
 import Chatbot from "@/components/Chatbot";
 
@@ -47,9 +47,9 @@ export default function Home() {
   }, []);
 
   return (
-    <main className={`min-h-screen bg-midnight transition-colors duration-1000 cursor-none ${lumos ? "lumos-theme" : ""}`}>
+    <main className={`min-h-screen bg-midnight transition-colors duration-1000 ${lumos ? "lumos-theme" : ""}`}>
       {/* Magical Upgrades */}
-      <MagicCursor />
+
       <ScrollSpell />
 
       {lumos && (
