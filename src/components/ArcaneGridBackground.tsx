@@ -60,6 +60,7 @@ function GridContent() {
                         count={particles.length / 3}
                         array={particles}
                         itemSize={3}
+                        args={[particles, 3]} // Fix: args is required for bufferAttribute constructor
                     />
                 </bufferGeometry>
                 <pointsMaterial
