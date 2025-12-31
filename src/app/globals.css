@@ -1,26 +1,52 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-midnight: #0b132b;
+  --color-parchment: #f4ecd8;
+  --color-gold: #d4af37;
+  --color-emerald: #2e8b57;
+
+  --font-serif: var(--font-serif);
+  --font-sans: var(--font-sans);
+  --font-mono: var(--font-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+:root {
+  --background: var(--color-midnight);
+  --foreground: var(--color-parchment);
+}
+
+.lumos-theme {
+  --color-midnight: #f4ecd8;
+  /* Parchment color */
+  --color-parchment: #0b132b;
+  /* Midnight color */
+  --color-gold: #b8860b;
+  /* Darker gold for contrast on light bg */
+  --color-emerald: #0f5132;
+  /* Darker emerald for contrast */
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+}
+
+/* Custom Utilities */
+.text-gold {
+  color: var(--color-gold);
+}
+
+.text-emerald {
+  color: var(--color-emerald);
+}
+
+.bg-midnight {
+  background-color: var(--color-midnight);
+}
+
+.bg-parchment {
+  background-color: var(--color-parchment);
 }
