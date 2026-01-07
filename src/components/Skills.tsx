@@ -153,11 +153,11 @@ export default function Skills() {
 
                 if (distance < minDistance) {
                     minDistance = distance;
-                    closestSpell = spells[index];
+                    closestSpell = spells[index] || null;
                 }
             });
 
-            if (closestSpell && closestSpell.id !== activeSpell.id) {
+            if (closestSpell !== null && closestSpell.id !== activeSpell.id) {
                 setActiveSpell(closestSpell);
             }
         }, 16); // 16ms = ~60fps, browser will interpolate to 120fps
