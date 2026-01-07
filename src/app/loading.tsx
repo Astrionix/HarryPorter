@@ -1,11 +1,11 @@
+"use client";
+
 export default function Loading() {
     return (
-        <div className="flex h-screen items-center justify-center bg-[#0b132b] text-[#d4af37]">
+        <div className="min-h-screen bg-midnight flex items-center justify-center">
             <div className="text-center">
-                <div className="mb-4 text-4xl animate-pulse">⚡</div>
-                <h2 className="text-xl font-serif tracking-widest animate-bounce">
-                    Casting spells...
-                </h2>
+                <div className="w-16 h-16 border-4 border-gold/30 border-t-gold rounded-full mx-auto mb-4 animate-spin" />
+                <p className="text-parchment font-serif text-xl">Loading...</p>
             </div>
         </div>
     );

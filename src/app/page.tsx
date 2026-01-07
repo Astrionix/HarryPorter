@@ -13,7 +13,6 @@ import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 
 import ScrollSpell from "@/components/ScrollSpell";
-import Chatbot from "@/components/Chatbot";
 
 export default function Home() {
   const [lumos, setLumos] = useState(false);
@@ -65,7 +64,6 @@ export default function Home() {
       <Achievements />
       <Certifications />
       <Contact />
-      <Chatbot />
       <Footer />
     </main>
   );

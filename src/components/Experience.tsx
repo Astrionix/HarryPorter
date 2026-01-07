@@ -6,7 +6,7 @@ import { Shield, Calendar, Briefcase } from "lucide-react";
 export default function Experience() {
     const experiences = [
         {
-            company: "HC Technologies",
+            company: "Adhoc Technologies",
             role: "Software Intern",
             date: "Jan 2024 - June 2024",
             description: "Specialized in backend development and optimization spells. Fortified server architectures against dark latency arts.",

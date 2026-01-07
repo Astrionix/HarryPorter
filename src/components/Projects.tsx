@@ -89,41 +89,77 @@ export default function Projects() {
                 </h2>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    {projects.map((project) => (
+                    {projects.map((project, index) => (
                         <motion.div
                             key={project.id}
-                            layoutId={`project-${project.id}`}
-                            onClick={() => setSelectedProject(project)}
-                            whileHover={{ y: -10, boxShadow: "0 10px 30px -10px rgba(0,0,0,0.5)" }}
-                            className="group cursor-pointer bg-parchment/5 border border-gold/20 rounded-xl p-6 relative overflow-hidden backdrop-blur-sm"
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ delay: index * 0.1 }}
+                            className="group relative"
                         >
-                            <div className={`absolute top-0 right-0 w-24 h-24 bg-gradient-to-br ${project.color} opacity-20 blur-2xl rounded-full group-hover:opacity-40 transition-opacity`} />
+                            <motion.div
+                                layoutId={`project-${project.id}`}
+                                whileHover={{ y: -10, boxShadow: "0 20px 40px -10px rgba(212,175,55,0.3)" }}
+                                className="cursor-pointer bg-parchment/5 border border-gold/20 rounded-xl p-6 relative overflow-hidden h-full"
+                            >
+                                <div className={`absolute top-0 right-0 w-24 h-24 bg-gradient-to-br ${project.color} opacity-20 blur-2xl rounded-full group-hover:opacity-40 transition-opacity`} />
 
-                            <div className="mb-4">
-                                <FlaskConical className={`w-10 h-10 text-parchment group-hover:text-gold transition-colors`} />
-                            </div>
+                                <div className="mb-4">
+                                    <FlaskConical className={`w-10 h-10 text-parchment group-hover:text-gold transition-colors`} />
+                                </div>
 
-                            <h3 className="text-2xl font-serif text-parchment mb-2 group-hover:text-gold transition-colors">
-                                {project.title}
-                            </h3>
-                            <p className="text-sm font-serif text-emerald italic mb-4">
-                                {project.subtitle}
-                            </p>
+                                <h3 className="text-2xl font-serif text-parchment mb-2 group-hover:text-gold transition-colors">
+                                    {project.title}
+                                </h3>
+                                <p className="text-sm font-serif text-emerald italic mb-4">
+                                    {project.subtitle}
+                                </p>
 
-                            <div className="flex gap-2 flex-wrap mt-4">
-                                {project.techStack.map((tech) => (
-                                    <span key={tech} className="text-xs font-mono bg-midnight/50 px-2 py-1 rounded text-parchment/70">
-                                        {tech}
-                                    </span>
-                                ))}
-                            </div>
+                                <p className="text-parchment/70 text-sm mb-4 line-clamp-2">
+                                    {project.description}
+                                </p>
+
+                                <div className="flex gap-2 flex-wrap mt-4">
+                                    {project.techStack.map((tech) => (
+                                        <span key={tech} className="text-xs font-mono bg-midnight/50 px-2 py-1 rounded text-parchment/70">
+                                            {tech}
+                                        </span>
+                                    ))}
+                                </div>
+
+                                {/* Hover Overlay with Actions */}
+                                <motion.div
+                                    initial={{ opacity: 0 }}
+                                    whileHover={{ opacity: 1 }}
+                                    className="absolute inset-0 bg-midnight/95 rounded-xl flex flex-col items-center justify-center gap-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                                >
+                                    <button
+                                        onClick={() => setSelectedProject(project)}
+                                        className="px-6 py-2 bg-gold text-midnight font-bold rounded-lg hover:bg-gold/80 transition-colors flex items-center gap-2"
+                                    >
+                                        <ExternalLink className="w-4 h-4" />
+                                        View Details
+                                    </button>
+                                    <button
+                                        onClick={(e) => {
+                                            e.stopPropagation();
+                                            // Add GitHub link logic here
+                                        }}
+                                        className="px-6 py-2 border border-parchment text-parchment rounded-lg hover:bg-parchment/10 transition-colors flex items-center gap-2"
+                                    >
+                                        <Github className="w-4 h-4" />
+                                        View Code
+                                    </button>
+                                </motion.div>
+                            </motion.div>
                         </motion.div>
                     ))}
                 </div>
 
                 <AnimatePresence>
                     {selectedProject && (
-                        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-midnight/80 backdrop-blur-md">
+                        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-midnight/90">
                             <motion.div
                                 layoutId={`project-${selectedProject.id}`}
                                 className="bg-midnight border border-gold w-full max-w-3xl rounded-xl overflow-hidden max-h-[90vh] overflow-y-auto relative shadow-2xl"

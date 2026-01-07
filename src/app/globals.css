@@ -18,13 +18,9 @@
 
 .lumos-theme {
   --color-midnight: #f4ecd8;
-  /* Parchment color */
   --color-parchment: #0b132b;
-  /* Midnight color */
   --color-gold: #b8860b;
-  /* Darker gold for contrast on light bg */
   --color-emerald: #0f5132;
-  /* Darker emerald for contrast */
 }
 
 body {
@@ -49,4 +45,242 @@ body {
 
 .bg-parchment {
   background-color: var(--color-parchment);
+}
+
+/* Hide scrollbar */
+.custom-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.custom-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth;
+}
+
+/* 120fps Ultra Performance Optimizations */
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Force GPU acceleration for all elements */
+*,
+*::before,
+*::after {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+/* Optimize animations - use only transform and opacity */
+[class*="animate-"],
+[class*="transition-"],
+button,
+a,
+.motion-safe\:animate-pulse,
+.animate-pulse {
+  will-change: transform, opacity;
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+/* Remove will-change after animation completes to free resources */
+@media (prefers-reduced-motion: no-preference) {
+  * {
+    animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  }
+}
+
+/* Optimize backdrop blur - use sparingly */
+.backdrop-blur-sm,
+.backdrop-blur-md,
+.backdrop-blur-xl {
+  will-change: backdrop-filter;
+  transform: translateZ(0);
+  contain: layout style paint;
+}
+
+/* Optimize scroll containers */
+.overflow-x-auto,
+.overflow-y-auto {
+  will-change: scroll-position;
+  transform: translateZ(0);
+  contain: layout style paint;
+  scroll-snap-type: x mandatory;
+}
+
+/* Optimize images and media */
+img,
+video,
+canvas {
+  will-change: transform;
+  transform: translateZ(0);
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+}
+
+/* Reduce paint areas */
+.container {
+  contain: layout style;
+}
+
+/* Optimize hover states - use only transform */
+button:hover,
+a:hover {
+  will-change: transform;
+  transform: translateZ(0) scale(1.02);
+}
+
+/* Optimize motion components */
+[data-framer-component-type] {
+  will-change: transform, opacity;
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+}
+
+/* Force compositing for sections */
+section {
+  will-change: transform;
+  transform: translateZ(0);
+  contain: layout style paint;
+}
+
+/* Optimize fixed elements */
+.fixed {
+  will-change: transform;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+/* Reduce repaints on scroll */
+.relative,
+.absolute {
+  will-change: transform;
+  transform: translateZ(0);
+}
+
+/* Custom slow animations for backgrounds */
+@keyframes spin-slow {
+  from {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+@keyframes spin-slower-reverse {
+  from {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+
+  to {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+}
+
+@keyframes spin-medium {
+  from {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+.animate-spin-slow {
+  animation: spin-slow 60s linear infinite;
+}
+
+.animate-spin-slower-reverse {
+  animation: spin-slower-reverse 45s linear infinite;
+}
+
+.animate-spin-medium {
+  animation: spin-medium 30s linear infinite;
+}
+
+/* Floating animations for hero background */
+@keyframes float {
+
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes float-delayed {
+
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(20px);
+  }
+}
+
+@keyframes particle {
+  0% {
+    transform: translateY(0) translateX(0);
+    opacity: 0;
+  }
+
+  10% {
+    opacity: 1;
+  }
+
+  90% {
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateY(-100vh) translateX(50px);
+    opacity: 0;
+  }
+}
+
+@keyframes pulse-slow {
+
+  0%,
+  100% {
+    opacity: 0.3;
+    transform: translate(-50%, -50%) scale(1);
+  }
+
+  50% {
+    opacity: 0.5;
+    transform: translate(-50%, -50%) scale(1.1);
+  }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-float-delayed {
+  animation: float-delayed 8s ease-in-out infinite;
+}
+
+.animate-particle {
+  animation: particle linear infinite;
+}
+
+.animate-pulse-slow {
+  animation: pulse-slow 4s ease-in-out infinite;
 }

@@ -17,7 +17,7 @@ const knowledgeBase = {
         "who are you", "what is this", "intro", "hello", "hi", "hey"
     ],
     experience: [
-        "experience", "work", "job", "internship", "company", "hc technologies", "codeclause"
+        "experience", "work", "job", "internship", "company", "adhoc technologies", "codeclause"
     ],
     skills: [
         "skills", "stack", "technologies", "languages", "python", "java", "react", "flutter", "ai", "ml"
@@ -39,7 +39,7 @@ const knowledgeBase = {
 const responses = {
     default: "The mists are thick... I did not understand that spell. Ask me about my Experience, Skills, Projects, or Certifications.",
     identity: "I am the Arcane Guardian of this portfolio. I serve Padala L M Ramachandra Reddy, a Master of AI and Full-Stack Wizardry.",
-    experience: "My master has served as:\n• Software Intern at HC Technologies (Jan 2024 - June 2024)\n• Web Dev Intern at CodeClause (Sep 2025 - Oct 2025)\nFocusing on backend optimization and API defense.",
+    experience: "My master has served as:\n• Software Intern at Adhoc Technologies (Jan 2024 - June 2024)\n• Web Dev Intern at CodeClause (Sep 2025 - Oct 2025)\nFocusing on backend optimization and API defense.",
     skills: "The spellbook contains many powerful incantations:\n• Languages: Python, Java, C, Dart\n• AI/ML: TensorFlow, PyTorch, LLMs, RAG\n• Web: React, Node.js, Flask\n• Mobile: Flutter\n• Databases: MySQL, MongoDB",
     projects: "Behold the artifacts created:\n• PlateX (AI Nutrition Analysis)\n• ToxiNextX (AI Toxicity Detection)\n• EduElect (Blockchain Voting)\n• Tron (AI Chatbot)\n• MedScanX (Medical Imaging)",
     contact: "You may reach the master via:\n• Email: padalalmrreddy@gmail.com\n• GitHub: github.com/Astrionix\nOr use the 'Contact' section below.",
@@ -143,8 +143,8 @@ export default function Chatbot() {
                                 >
                                     <div
                                         className={`max-w-[80%] p-3 rounded-xl text-sm leading-relaxed ${msg.sender === "user"
-                                                ? "bg-gold text-midnight font-medium rounded-tr-none"
-                                                : "bg-white/10 text-parchment border border-white/10 rounded-tl-none"
+                                            ? "bg-gold text-midnight font-medium rounded-tr-none"
+                                            : "bg-white/10 text-parchment border border-white/10 rounded-tl-none"
                                             }`}
                                     >
                                         {msg.text.split('\n').map((line, i) => (
