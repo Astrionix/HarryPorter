@@ -8,7 +8,18 @@ import {
 } from "lucide-react";
 import ArcaneGridBackground from "./ArcaneGridBackground";
 
-const spells = [
+interface Spell {
+    id: string;
+    name: string;
+    realName: string;
+    icon: any;
+    description: string;
+    level: string;
+    mana: string;
+    tech: string[];
+}
+
+const spells: Spell[] = [
     {
         id: "prog",
         name: "Polyglot Prime",
@@ -143,7 +154,7 @@ export default function Skills() {
 
             const containerCenter = container.getBoundingClientRect().left + container.offsetWidth / 2;
 
-            let closestSpell: typeof spells[0] | null = null;
+            let closestSpell: Spell | null = null;
             let minDistance = Infinity;
 
             Array.from(container.children).forEach((child, index) => {
