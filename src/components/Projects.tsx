@@ -13,6 +13,7 @@ interface Project {
     solution: string;
     techStack: string[];
     color: string;
+    githubUrl: string;
 }
 
 const projects: Project[] = [
@@ -25,6 +26,7 @@ const projects: Project[] = [
         solution: "Real-time NLP analysis using BERT models to filter harmful content.",
         techStack: ["Python", "TensorFlow", "React", "FastAPI"],
         color: "from-purple-500 to-indigo-600",
+        githubUrl: "https://github.com/Astrionix/ToxiNextX"
     },
     {
         id: "eduelect",
@@ -35,6 +37,7 @@ const projects: Project[] = [
         solution: "Decentralized ledger application (DApp) on Ethereum.",
         techStack: ["Solidity", "Blockchain", "Web3.js", "React"],
         color: "from-blue-400 to-cyan-500",
+        githubUrl: "https://github.com/Astrionix/EduElect"
     },
     {
         id: "tron",
@@ -45,6 +48,7 @@ const projects: Project[] = [
         problem: "Static FAQ sections are inefficient.",
         solution: "Conversational AI that learns from user interactions.",
         color: "from-green-400 to-emerald-600",
+        githubUrl: "https://github.com/Astrionix/Tron"
     },
     {
         id: "medscanx",
@@ -55,6 +59,7 @@ const projects: Project[] = [
         problem: "Human error in X-ray analysis.",
         solution: "CNN-based classification for high-accuracy diagnostics.",
         color: "from-red-400 to-rose-600",
+        githubUrl: "https://github.com/Astrionix/MedScanX"
     },
     {
         id: "airquality",
@@ -65,6 +70,7 @@ const projects: Project[] = [
         problem: "Lack of localized air quality data.",
         solution: "Distributed sensor network feeding a central dashboard.",
         color: "from-gray-400 to-slate-600",
+        githubUrl: "https://github.com/Astrionix/AirQuality"
     },
     {
         id: "platex",
@@ -75,6 +81,7 @@ const projects: Project[] = [
         problem: "Manual calorie tracking is tedious and prone to error.",
         solution: "Instant nutritional breakdown via AI-driven image analysis.",
         color: "from-orange-400 to-amber-600",
+        githubUrl: "https://github.com/Astrionix/PlateX"
     }
 ];
 
@@ -141,16 +148,16 @@ export default function Projects() {
                                         <ExternalLink className="w-4 h-4" />
                                         View Details
                                     </button>
-                                    <button
-                                        onClick={(e) => {
-                                            e.stopPropagation();
-                                            // Add GitHub link logic here
-                                        }}
+                                    <a
+                                        href={project.githubUrl}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        onClick={(e) => e.stopPropagation()}
                                         className="px-6 py-2 border border-parchment text-parchment rounded-lg hover:bg-parchment/10 transition-colors flex items-center gap-2"
                                     >
                                         <Github className="w-4 h-4" />
                                         View Code
-                                    </button>
+                                    </a>
                                 </motion.div>
                             </motion.div>
                         </motion.div>
@@ -159,15 +166,22 @@ export default function Projects() {
 
                 <AnimatePresence>
                     {selectedProject && (
-                        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-midnight/90">
+                        <motion.div
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            exit={{ opacity: 0 }}
+                            className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-midnight/90 cursor-pointer"
+                            onClick={() => setSelectedProject(null)}
+                        >
                             <motion.div
                                 layoutId={`project-${selectedProject.id}`}
-                                className="bg-midnight border border-gold w-full max-w-3xl rounded-xl overflow-hidden max-h-[90vh] overflow-y-auto relative shadow-2xl"
+                                className="bg-midnight border border-gold w-full max-w-3xl rounded-xl overflow-hidden max-h-[90vh] overflow-y-auto relative shadow-2xl cursor-default"
+                                onClick={(e) => e.stopPropagation()}
                             >
                                 <div className={`h-2 bg-gradient-to-r ${selectedProject.color}`} />
                                 <button
-                                    onClick={(e) => { e.stopPropagation(); setSelectedProject(null); }}
-                                    className="absolute top-4 right-4 text-parchment hover:text-gold p-2 bg-midnight/50 rounded-full"
+                                    onClick={() => setSelectedProject(null)}
+                                    className="absolute top-4 right-4 text-parchment hover:text-gold p-2 bg-midnight/80 rounded-full z-50 transition-colors"
                                 >
                                     <X className="w-6 h-6" />
                                 </button>
@@ -206,7 +220,12 @@ export default function Projects() {
                                                 <a href="#" className="flex items-center justify-center gap-2 w-full py-2 bg-gold text-midnight font-bold rounded hover:bg-gold/80 transition-colors">
                                                     <ExternalLink className="w-4 h-4" /> Live Demo
                                                 </a>
-                                                <a href="#" className="flex items-center justify-center gap-2 w-full py-2 border border-parchment text-parchment rounded hover:bg-parchment/10 transition-colors">
+                                                <a
+                                                    href={selectedProject.githubUrl}
+                                                    target="_blank"
+                                                    rel="noopener noreferrer"
+                                                    className="flex items-center justify-center gap-2 w-full py-2 border border-parchment text-parchment rounded hover:bg-parchment/10 transition-colors"
+                                                >
                                                     <Github className="w-4 h-4" /> View Code
                                                 </a>
                                             </div>
@@ -214,7 +233,7 @@ export default function Projects() {
                                     </div>
                                 </div>
                             </motion.div>
-                        </div>
+                        </motion.div>
                     )}
                 </AnimatePresence>
             </div>
