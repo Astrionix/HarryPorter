@@ -140,7 +140,6 @@ export default function Skills() {
     const handleScroll = () => {
         if (!scrollContainerRef.current) return;
 
-        // Optimized for 120fps - 16ms throttle
         if (scrollTimeoutRef.current) {
             clearTimeout(scrollTimeoutRef.current);
         }
@@ -149,29 +148,33 @@ export default function Skills() {
             if (!scrollContainerRef.current) return;
 
             const container = scrollContainerRef.current;
-            // Only run this logic on mobile where horizontal scroll is active
             if (window.innerWidth >= 1024) return;
 
             const containerCenter = container.getBoundingClientRect().left + container.offsetWidth / 2;
 
-            let closestSpell: Spell | null = null;
-            let minDistance = Infinity;
+            let closestDistance = Infinity;
+            let foundIndex = -1;
 
-            Array.from(container.children).forEach((child, index) => {
+            const children = Array.from(container.children);
+            for (let i = 0; i < children.length; i++) {
+                const child = children[i];
                 const rect = child.getBoundingClientRect();
                 const childCenter = rect.left + rect.width / 2;
                 const distance = Math.abs(containerCenter - childCenter);
 
-                if (distance < minDistance) {
-                    minDistance = distance;
-                    closestSpell = spells[index] || null;
+                if (distance < closestDistance) {
+                    closestDistance = distance;
+                    foundIndex = i;
                 }
-            });
-
-            if (closestSpell !== null && closestSpell.id !== activeSpell.id) {
-                setActiveSpell(closestSpell);
             }
-        }, 16); // 16ms = ~60fps, browser will interpolate to 120fps
+
+            if (foundIndex !== -1 && spells[foundIndex]) {
+                const closestSpell = spells[foundIndex];
+                if (closestSpell.id !== activeSpell.id) {
+                    setActiveSpell(closestSpell);
+                }
+            }
+        }, 16);
     };
 
     const handleSpellClick = (spell: typeof spells[0], e: React.MouseEvent<HTMLButtonElement>) => {
