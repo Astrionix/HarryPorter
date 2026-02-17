@@ -4,6 +4,30 @@ import { motion } from "framer-motion";
 import { ArrowRight, FileText } from "lucide-react";
 import ArcaneCircleBackground from "@/components/ArcaneCircleBackground";
 
+// Pre-computed particle positions to avoid hydration mismatch (no Math.random during render)
+const PARTICLES = [
+    { left: "5%", top: "12%", delay: "0s", duration: "8s" },
+    { left: "15%", top: "67%", delay: "1.2s", duration: "12s" },
+    { left: "25%", top: "34%", delay: "0.5s", duration: "9s" },
+    { left: "35%", top: "80%", delay: "2.1s", duration: "11s" },
+    { left: "45%", top: "22%", delay: "3.4s", duration: "7s" },
+    { left: "55%", top: "55%", delay: "0.8s", duration: "14s" },
+    { left: "65%", top: "10%", delay: "4.2s", duration: "10s" },
+    { left: "75%", top: "73%", delay: "1.7s", duration: "13s" },
+    { left: "85%", top: "41%", delay: "2.9s", duration: "8s" },
+    { left: "95%", top: "88%", delay: "0.3s", duration: "11s" },
+    { left: "10%", top: "45%", delay: "3.8s", duration: "9s" },
+    { left: "20%", top: "90%", delay: "1.5s", duration: "12s" },
+    { left: "30%", top: "15%", delay: "4.7s", duration: "7s" },
+    { left: "40%", top: "60%", delay: "0.6s", duration: "14s" },
+    { left: "50%", top: "30%", delay: "2.3s", duration: "10s" },
+    { left: "60%", top: "78%", delay: "3.1s", duration: "8s" },
+    { left: "70%", top: "5%", delay: "1.9s", duration: "13s" },
+    { left: "80%", top: "52%", delay: "4.5s", duration: "9s" },
+    { left: "90%", top: "25%", delay: "0.1s", duration: "11s" },
+    { left: "48%", top: "95%", delay: "2.7s", duration: "12s" },
+];
+
 export default function Hero() {
     return (
         <section className="min-h-screen flex items-center justify-center relative overflow-hidden pt-20">
@@ -15,15 +39,15 @@ export default function Hero() {
                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gold/10 rounded-full blur-3xl animate-pulse-slow" />
 
                 {/* Floating Particles */}
-                {[...Array(20)].map((_, i) => (
+                {PARTICLES.map((p, i) => (
                     <div
                         key={i}
                         className="absolute w-1 h-1 bg-gold/40 rounded-full animate-particle"
                         style={{
-                            left: `${Math.random() * 100}%`,
-                            top: `${Math.random() * 100}%`,
-                            animationDelay: `${Math.random() * 5}s`,
-                            animationDuration: `${5 + Math.random() * 10}s`
+                            left: p.left,
+                            top: p.top,
+                            animationDelay: p.delay,
+                            animationDuration: p.duration
                         }}
                     />
                 ))}
@@ -61,12 +85,12 @@ export default function Hero() {
                         MCA Graduate | AI & Full-Stack Developer
                     </h3>
                     <p className="text-parchment/80 text-lg max-w-2xl mx-auto mb-10 italic font-serif">
-                        "Turning logic into intelligent systems."
+                        &ldquo;Turning logic into intelligent systems.&rdquo;
                     </p>
 
                     <div className="flex flex-col md:flex-row gap-6 justify-center">
                         <motion.a
-                            href="/Padala L M Ramachandra Reddy.pdf"
+                            href="/Padala_L M RamachandraReddy_Resume.pdf"
                             target="_blank"
                             rel="noopener noreferrer"
                             whileHover={{ scale: 1.05, boxShadow: "0 0 20px rgba(212, 175, 55, 0.3)" }}

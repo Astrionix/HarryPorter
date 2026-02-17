@@ -18,70 +18,70 @@ interface Project {
 
 const projects: Project[] = [
     {
-        id: "toxinextx",
-        title: "ToxiNextX",
+        id: "toxinetx",
+        title: "ToxiNetX",
         subtitle: "Anti-Venom for Digital Toxicity",
-        description: "AI-powered content moderation system to detect and flag toxic comments and hate speech.",
-        problem: "Rising toxicity in social platforms.",
-        solution: "Real-time NLP analysis using BERT models to filter harmful content.",
-        techStack: ["Python", "TensorFlow", "React", "FastAPI"],
+        description: "Next-generation AI content moderation and social safety engine with real-time detection of hate speech, cyberbullying, and toxicity.",
+        problem: "Rising toxicity, hate speech, and cyberbullying in digital platforms.",
+        solution: "Real-time NLP moderation workflows with ML pipelines for automated content filtering and detection accuracy.",
+        techStack: ["Next.js", "NLP", "Machine Learning", "Vercel"],
         color: "from-purple-500 to-indigo-600",
-        githubUrl: "https://github.com/Astrionix/ToxiNextX"
+        githubUrl: "https://github.com/Astrionix/ToxinetX"
     },
     {
-        id: "eduelect",
-        title: "EduElect",
-        subtitle: "The Unbreakable Vow of Voting",
-        description: "Secure blockchain-based voting system ensuring transparency and immutability.",
-        problem: "Trust issues in traditional student elections.",
-        solution: "Decentralized ledger application (DApp) on Ethereum.",
-        techStack: ["Solidity", "Blockchain", "Web3.js", "React"],
+        id: "edumatrix",
+        title: "EduMatriX",
+        subtitle: "The Academy's Enchanted Ledger",
+        description: "Comprehensive academic management portal with role-based dashboards for students, faculty, and administrators.",
+        problem: "Fragmented academic workflows and lack of unified portal for students, faculty, and admins.",
+        solution: "Modular architecture with secure access control, real-time class scheduling, resource sharing, and assignment tracking.",
+        techStack: ["Next.js", "TypeScript", "Supabase", "Tailwind CSS"],
         color: "from-blue-400 to-cyan-500",
-        githubUrl: "https://github.com/Astrionix/EduElect"
-    },
-    {
-        id: "tron",
-        title: "Tron",
-        subtitle: "The Oracle Automaton",
-        description: "Intelligent chatbot assistant capable of natural conversation and task execution.",
-        techStack: ["NLP", "Python", "OpenAI API"],
-        problem: "Static FAQ sections are inefficient.",
-        solution: "Conversational AI that learns from user interactions.",
-        color: "from-green-400 to-emerald-600",
-        githubUrl: "https://github.com/Astrionix/Tron"
+        githubUrl: "https://github.com/Astrionix/EduMatriX"
     },
     {
         id: "medscanx",
         title: "MedScanX",
         subtitle: "The Healer's Vision",
-        description: "Medical imaging analysis tool for early disease detection.",
-        techStack: ["Computer Vision", "PyTorch", "Flask"],
-        problem: "Human error in X-ray analysis.",
-        solution: "CNN-based classification for high-accuracy diagnostics.",
+        description: "AI-powered platform that analyzes CT scans with Gemini 2.5 Pro, providing instant medical insights, detailed reports, and secure result storage.",
+        techStack: ["Next.js", "Gemini AI", "Supabase", "Tailwind CSS"],
+        problem: "Human error and delays in medical scan analysis.",
+        solution: "Multimodal AI analysis with secure authentication, file upload to Supabase Storage, and row-level security for data privacy.",
         color: "from-red-400 to-rose-600",
         githubUrl: "https://github.com/Astrionix/MedScanX"
-    },
-    {
-        id: "airquality",
-        title: "AirQuality Sense",
-        subtitle: "Divining the Air",
-        description: "IoT-based pollution monitoring system with real-time analytics.",
-        techStack: ["IoT", "Arduino", "Python", "Data Viz"],
-        problem: "Lack of localized air quality data.",
-        solution: "Distributed sensor network feeding a central dashboard.",
-        color: "from-gray-400 to-slate-600",
-        githubUrl: "https://github.com/Astrionix/AirQuality"
     },
     {
         id: "platex",
         title: "PlateX",
         subtitle: "The All-Seeing Nutrition Eye",
-        description: "AI-powered food nutrition analysis platform transforming meal photos into health data.",
-        techStack: ["React", "Node.js", "AI/CV", "Web"],
+        description: "AI-powered responsive web app for food image analysis, nutrition estimation (calories, macros), and personalized diet tracking.",
+        techStack: ["React", "Node.js", "AI/CV", "Supabase"],
         problem: "Manual calorie tracking is tedious and prone to error.",
-        solution: "Instant nutritional breakdown via AI-driven image analysis.",
+        solution: "Personalized diet tracking with intelligent nutritional insights, gamification, AI assistant, and interactive UI.",
         color: "from-orange-400 to-amber-600",
         githubUrl: "https://github.com/Astrionix/PlateX"
+    },
+    {
+        id: "saferoutex",
+        title: "SafeRouteX",
+        subtitle: "The Guardian's Compass",
+        description: "Full-stack platform providing safest navigation routes using real-time crime data, CCTV locations, and streetlight density.",
+        techStack: ["Next.js", "Node.js", "PostgreSQL", "PostGIS"],
+        problem: "Navigating unfamiliar areas without awareness of safety risks.",
+        solution: "Dual routing (fastest + safest), crime heatmaps, live SOS alerts, admin dashboard, and time-based safety scoring.",
+        color: "from-green-400 to-emerald-600",
+        githubUrl: "https://github.com/Astrionix/SafeRouteX"
+    },
+    {
+        id: "sentix",
+        title: "SentiX",
+        subtitle: "The Emotion Oracle",
+        description: "AI sentiment analysis system for code-mixed and multilingual text using Llama 3.3 70B via Groq API with real-time confidence scoring.",
+        techStack: ["Python", "FastAPI", "Llama 3.3", "Tailwind CSS"],
+        problem: "Understanding emotional tone in informal, multilingual text is complex for traditional tools.",
+        solution: "Groq-powered high-speed inference with confidence scoring, optimized for code-mixed input and glassmorphism UI.",
+        color: "from-sky-400 to-blue-600",
+        githubUrl: "https://github.com/Astrionix/SentiX"
     }
 ];
 

@@ -1,10 +1,18 @@
 "use client";
 
 import { motion, useMotionTemplate, useMotionValue, useSpring, useTransform } from "framer-motion";
-import { Mail, Github, Linkedin, ExternalLink } from "lucide-react";
+import { Mail, Github, Linkedin, ExternalLink, Phone } from "lucide-react";
 import { MouseEvent } from "react";
 
-function HolographicCard({ href, icon: Icon, title, value, label }: any) {
+interface HolographicCardProps {
+    href: string;
+    icon: React.ComponentType<{ className?: string }>;
+    title: string;
+    value: string;
+    label: string;
+}
+
+function HolographicCard({ href, icon: Icon, title, value, label }: HolographicCardProps) {
     const x = useMotionValue(0);
     const y = useMotionValue(0);
 
@@ -94,7 +102,14 @@ export default function Contact() {
                     </p>
                 </div>
 
-                <div className="grid md:grid-cols-3 gap-8">
+                <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <HolographicCard
+                        href="tel:+918464936999"
+                        icon={Phone}
+                        title="Direct Line"
+                        value="+91 8464936999"
+                        label="Voice Channel"
+                    />
                     <HolographicCard
                         href="mailto:padalalmrreddy@gmail.com"
                         icon={Mail}
@@ -110,7 +125,7 @@ export default function Contact() {
                         label="Access Repositories"
                     />
                     <HolographicCard
-                        href="https://www.linkedin.com/in/padala-l-m-ramachandra-reddy-7529161b1/"
+                        href="https://www.linkedin.com/in/ramachandrareddy09/"
                         icon={Linkedin}
                         title="Pro Link"
                         value="LinkedIn Connection"

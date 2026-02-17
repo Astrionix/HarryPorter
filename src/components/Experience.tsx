@@ -1,23 +1,33 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Shield, Calendar, Briefcase } from "lucide-react";
+import { Shield, Calendar, Briefcase, MapPin } from "lucide-react";
 
 export default function Experience() {
     const experiences = [
         {
-            company: "Adhoc Technologies",
-            role: "Software Intern",
-            date: "Jan 2024 - June 2024",
-            description: "Specialized in backend development and optimization spells. Fortified server architectures against dark latency arts.",
-            skills: ["Java", "SQL", "Optimization"],
+            company: "PAT Technologies Pvt. Ltd.",
+            role: "Artificial Intelligence Intern",
+            date: "Feb 2026 – Present",
+            location: "Bengaluru, India",
+            description: "Developing AI-based solutions using Machine Learning, data analysis, and real-world problem-solving through live project implementation. Collaborating with mentors in project-driven environments.",
+            skills: ["Machine Learning", "Python", "Data Analysis", "AI Models"],
         },
         {
             company: "CodeClause",
             role: "Web Development Intern",
-            date: "Sep 2025 - Oct 2025",
-            description: "Constructed responsive user interfaces and integrated powerful APIs. Defended against cross-browser compatibility curses.",
-            skills: ["React", "CSS", "API Integration"],
+            date: "Sep 2025 – Oct 2025",
+            location: "Kakinada, Andhra Pradesh",
+            description: "Developed responsive web applications using HTML, CSS, JavaScript. Integrated RESTful APIs and participated in Agile development, debugging, and code reviews.",
+            skills: ["HTML/CSS", "JavaScript", "REST APIs", "Agile"],
+        },
+        {
+            company: "Adhoc Network Tech Company",
+            role: "Machine Learning Intern",
+            date: "Jan 2024 – Jun 2024",
+            location: "Visakhapatnam, AP",
+            description: "Applied Machine Learning techniques using Python for data preprocessing, exploratory data analysis, and feature engineering. Built and evaluated predictive models with real-world datasets.",
+            skills: ["Python", "Machine Learning", "Data Analysis", "EDA"],
         },
     ];
 
@@ -56,9 +66,12 @@ export default function Experience() {
                                     <div className="absolute top-0 right-0 w-20 h-20 bg-gold/10 rounded-full blur-2xl group-hover:bg-gold/20 transition-all" />
 
                                     <h3 className="text-2xl font-serif text-parchment mb-1">{exp.role}</h3>
-                                    <h4 className="text-lg font-serif text-emerald mb-4 flex items-center gap-2">
+                                    <h4 className="text-lg font-serif text-emerald mb-1 flex items-center gap-2">
                                         <Briefcase className="w-4 h-4" /> {exp.company}
                                     </h4>
+                                    <p className="text-xs text-parchment/50 mb-4 flex items-center gap-1">
+                                        <MapPin className="w-3 h-3" /> {exp.location}
+                                    </p>
 
                                     <p className="text-parchment/70 mb-4 font-sans leading-relaxed">
                                         {exp.description}

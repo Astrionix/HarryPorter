@@ -1,35 +1,35 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Star, Trophy, Award, Crown, Cpu, Keyboard, Users } from "lucide-react";
+import { Crown, Cpu, Keyboard, Users } from "lucide-react";
 
 export default function Achievements() {
     const achievements = [
         {
             title: "Agentic AI Competitor",
             points: "150",
-            description: "Participated in CICADA – Agentic AI Competition, showcasing innovative problem-solving and AI implementation skills.",
+            description: "Participated in CICADA – Agentic AI Competition. Built innovative AI solutions demonstrating strong problem-solving, teamwork, and real-world AI application skills.",
             icon: Cpu,
             rarity: "Epic",
         },
         {
             title: "Hackathon Organizer",
             points: "200",
-            description: "Collaborated in hosting a State-Level Hackathon during the CUEST event, coordinating with teams and ensuring success.",
+            description: "Coordinated planning, logistics, and technical support for a State-Level Hackathon during the CUEST event, ensuring smooth participant engagement and successful execution.",
             icon: Crown,
             rarity: "Legendary",
         },
         {
             title: "No-Code Challenge Lead",
             points: "100",
-            description: "Organized and conducted a No-Code Challenge, encouraging creativity and rapid prototyping.",
+            description: "Organized and managed a No-Code Challenge during the CUEST event, encouraging rapid prototyping, creativity, and problem-solving among participants.",
             icon: Keyboard,
             rarity: "Rare",
         },
         {
-            title: "Technical Coordinator",
+            title: "Technical Coordinator — FXC Club",
             points: "120",
-            description: "Led technical activities for the FXC Club during MCA, coordinating events and supporting member projects.",
+            description: "Led technical initiatives during MCA, mentored students in project development, and organized workshops/events to promote practical learning and innovation.",
             icon: Users,
             rarity: "Epic",
         }
@@ -42,7 +42,7 @@ export default function Achievements() {
                     House Points Earned <span className="text-gold text-2xl mx-2"> (Achievements)</span>
                 </h2>
                 <p className="text-center text-parchment/60 mb-16 max-w-2xl mx-auto font-serifitalic">
-                    "Recognition bestowed for exceptional magical prowess and contributions."
+                    &ldquo;Recognition bestowed for exceptional magical prowess and contributions.&rdquo;
                 </p>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">

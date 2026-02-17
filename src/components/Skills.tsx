@@ -3,8 +3,8 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useState, useRef } from "react";
 import {
-    Code, Server, Database, Layers, Terminal, Smartphone,
-    Brain, Cloud, Network, BarChart, Wrench, Users, Globe
+    Code, Server, Database, Layers, Terminal,
+    Brain, Cloud, BarChart, Wrench, Users, Globe
 } from "lucide-react";
 import ArcaneGridBackground from "./ArcaneGridBackground";
 
@@ -12,7 +12,7 @@ interface Spell {
     id: string;
     name: string;
     realName: string;
-    icon: any;
+    icon: React.ComponentType<{ className?: string }>;
     description: string;
     level: string;
     mana: string;
@@ -25,110 +25,110 @@ const spells: Spell[] = [
         name: "Polyglot Prime",
         realName: "Programming Languages",
         icon: Code,
-        description: "The fundamental runes of creation. Mastery over C, Python, and Java allows for shaping reality at the lowest levels.",
+        description: "The fundamental runes of creation. Mastery over Python, Java, C, and JavaScript allows for shaping reality at the lowest levels.",
         level: "Intermediate",
         mana: "Core",
-        tech: ["C", "Python", "Java"]
+        tech: ["Python", "Java", "C", "JavaScript"]
     },
     {
         id: "ml",
         name: "Tensor Mind",
         realName: "Machine Learning",
         icon: Brain,
-        description: "Imbuing machines with the ability to learn. Harnessing TensorFlow, PyTorch, Scikit-learn, Pandas, and NumPy.",
+        description: "Imbuing machines with the ability to learn. Harnessing TensorFlow, PyTorch, Scikit-learn, Pandas, NumPy, and BERT.",
         level: "Intermediate",
         mana: "Very High",
-        tech: ["TensorFlow", "PyTorch", "Pandas", "NumPy"]
+        tech: ["TensorFlow", "PyTorch", "Scikit-learn", "Pandas", "NumPy", "BERT"]
     },
     {
         id: "ai",
         name: "Neuro Mancer",
-        realName: "Deep Learning & AI",
+        realName: "AI & LLM Integration",
         icon: Terminal,
-        description: "Advanced summoning of Large Language Models (OpenAI, Gemini), RAG pipelines, and Vector Databases (Pinecone, Chroma).",
+        description: "Advanced summoning of Large Language Models (OpenAI API), Prompt Engineering, NLP Pipelines, Text Classification, and Model Integration.",
         level: "Intermediate",
         mana: "Legendary",
-        tech: ["LLMs", "LangChain", "RAG", "Vector DBs"]
+        tech: ["OpenAI API", "NLP Pipelines", "Prompt Eng.", "Text Classification"]
     },
     {
         id: "frontend",
         name: "Visio Weavus",
         realName: "Frontend Tech",
         icon: Layers,
-        description: "Crafting the visible illusions of the web. HTML5, CSS3, JavaScript, and React for responsive interfaces.",
+        description: "Crafting the visible illusions of the web. HTML5, CSS3, JavaScript, React.js, and Tailwind CSS for responsive interfaces.",
         level: "Intermediate",
         mana: "Medium",
-        tech: ["HTML5", "CSS3", "React", "JS"]
+        tech: ["HTML5", "CSS3", "React.js", "Tailwind CSS"]
     },
     {
         id: "backend",
         name: "Serverius Core",
         realName: "Backend Frameworks",
         icon: Server,
-        description: "The hidden engines that power the arcane. Flask, FastAPI, and Node.js (Express) for robust APIs.",
+        description: "The hidden engines that power the arcane. Node.js, Flask, Django, FastAPI, and Express.js for robust APIs.",
         level: "Intermediate",
         mana: "High",
-        tech: ["Flask", "FastAPI", "Node.js"]
+        tech: ["Node.js", "Flask", "Django", "FastAPI", "Express.js"]
+    },
+    {
+        id: "frameworks",
+        name: "Arcana Libris",
+        realName: "Frameworks & Libraries",
+        icon: Globe,
+        description: "The enchanted tomes of modern development. React.js, Express.js, Next.js, Flask, Django, TensorFlow, and PyTorch.",
+        level: "Intermediate",
+        mana: "High",
+        tech: ["React.js", "Next.js", "Express.js", "Django"]
     },
     {
         id: "db",
         name: "Data Vault",
         realName: "Databases",
         icon: Database,
-        description: "Eternal storage for knowledge. MySQL, PostgreSQL, MongoDB, and Firebase.",
+        description: "Eternal storage for knowledge. MongoDB, Firebase Realtime DB, and Supabase (PostgreSQL).",
         level: "Intermediate",
         mana: "Medium",
-        tech: ["MySQL", "PostgreSQL", "MongoDB"]
+        tech: ["MongoDB", "Firebase", "Supabase (PostgreSQL)"]
     },
     {
-        id: "devops",
-        name: "Cloud Walker",
-        realName: "DevOps & Cloud",
-        icon: Cloud,
-        description: "Deploying spells to the ether. Git, Docker, CI/CD, and Cloud Providers (AWS/GCP/Azure).",
-        level: "Beginner",
-        mana: "High",
-        tech: ["Docker", "Git", "AWS", "CI/CD"]
-    },
-    {
-        id: "api",
-        name: "Inter Connectus",
-        realName: "API & Integration",
-        icon: Network,
-        description: "Weaving connections between realms. REST APIs, GraphQL, and Postman.",
+        id: "tools",
+        name: "Forge Tools",
+        realName: "Tools & Technologies",
+        icon: Wrench,
+        description: "The wizard's workshop. Git, GitHub, Postman, Version Control, Debugging, and Agile Methodology.",
         level: "Intermediate",
-        mana: "Low",
-        tech: ["REST", "GraphQL", "Postman"]
+        mana: "Medium",
+        tech: ["Git", "GitHub", "Postman", "Agile"]
     },
     {
         id: "viz",
         name: "Charto Mancy",
         realName: "Data Visualization",
         icon: BarChart,
-        description: "Revealing hidden patterns through visual arts. Matplotlib, Seaborn, and Plotly.",
+        description: "Revealing hidden patterns through visual arts. Matplotlib and Seaborn for data-driven insights.",
         level: "Intermediate",
         mana: "Medium",
-        tech: ["Matplotlib", "Seaborn", "Plotly"]
+        tech: ["Matplotlib", "Seaborn"]
     },
     {
-        id: "tools",
-        name: "Forge Tools",
-        realName: "Tools & Hosting",
-        icon: Wrench,
-        description: "The wizard's workshop. Vercel, Netlify, VS Code, PyCharm, and Agentic IDEs.",
-        level: "Intermediate",
+        id: "deploy",
+        name: "Cloud Walker",
+        realName: "Deployment & Hosting",
+        icon: Cloud,
+        description: "Deploying spells to the ether. Vercel and Netlify for seamless web application hosting.",
+        level: "Beginner",
         mana: "Low",
-        tech: ["Vercel", "VS Code", "PyCharm"]
+        tech: ["Vercel", "Netlify"]
     },
     {
         id: "soft",
         name: "Empathos",
         realName: "Soft Skills",
         icon: Users,
-        description: "The magic of human connection. Leadership, Problem Solving, and Communication.",
+        description: "The magic of human connection. Problem Solving, Communication, Teamwork, Adaptability, Time Management, and Attention to Detail.",
         level: "Advanced",
         mana: "Infinite",
-        tech: ["Leadership", "Teamwork", "Adaptability"]
+        tech: ["Problem Solving", "Teamwork", "Communication", "Adaptability"]
     }
 ];
 
